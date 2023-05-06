@@ -48,34 +48,32 @@ class MainActivity : AppCompatActivity(), KoinComponent {
             boxBackgroundColor = Color.TRANSPARENT
             layoutParams = LayoutParams(MATCH_PARENT, WRAP_CONTENT).apply {
                 setMargins(dpToPx(16), dpToPx(0), dpToPx(16), dpToPx(0))
-
             }
         }
         val portEditText = TextInputEditText(portInputLayout.context)
         portInputLayout.addView(portEditText)
-
 
         val usernameInputLayout = TextInputLayout(this).apply {
             hint = "Username"
             boxBackgroundColor = Color.TRANSPARENT
             layoutParams = LayoutParams(MATCH_PARENT, WRAP_CONTENT).apply {
                 setMargins(dpToPx(16), dpToPx(0), dpToPx(16), dpToPx(0))
-
             }
         }
         val usernameEditText = TextInputEditText(portInputLayout.context)
         usernameInputLayout.addView(usernameEditText)
 
-
         val dialog = MaterialAlertDialogBuilder(this)
             .setTitle("Connect to Server")
             .setCancelable(false)
-            .setView(LinearLayout(this).apply {
-                orientation = LinearLayout.VERTICAL
-                addView(ipInputLayout)
-                addView(portInputLayout)
-                addView(usernameInputLayout)
-            })
+            .setView(
+                LinearLayout(this).apply {
+                    orientation = LinearLayout.VERTICAL
+                    addView(ipInputLayout)
+                    addView(portInputLayout)
+                    addView(usernameInputLayout)
+                }
+            )
             .setPositiveButton("Connect") { _, _ ->
                 val ipAddress = ipEditText.text.toString()
                 val port = portEditText.text.toString().toIntOrNull() ?: 0
@@ -111,7 +109,6 @@ class MainActivity : AppCompatActivity(), KoinComponent {
         val density = resources.displayMetrics.density
         return (dp * density).toInt()
     }
-
 
     override fun onSupportNavigateUp(): Boolean {
         return navController.navigateUp()

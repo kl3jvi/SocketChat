@@ -22,7 +22,6 @@ class ChatFragment : Fragment(R.layout.fragment_chat), KoinComponent {
         binding = FragmentChatBinding.bind(view)
         setupSender()
 
-
         collect(viewModel.messages) { messages ->
             val a = messages.map {
                 when (it) {
@@ -47,7 +46,6 @@ class ChatFragment : Fragment(R.layout.fragment_chat), KoinComponent {
                 }
             }
         }
-
     }
 
     private fun setupSender() {
@@ -59,7 +57,6 @@ class ChatFragment : Fragment(R.layout.fragment_chat), KoinComponent {
             }
         }
     }
-
 
     override fun onDestroy() {
         super.onDestroy()
